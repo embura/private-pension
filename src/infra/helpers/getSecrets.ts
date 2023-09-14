@@ -8,7 +8,7 @@ const secretSchema = z.object({
   MONGO_DB_NAME: z.string(),
   MONGO_BOOK_COLLECTION: z.string(),
   MONGO_RENT_BOOK_COLLECTION: z.string(),
-  MONGO_CLIENT_COLLECTION: z.string()
+  MONGO_CUSTOMER_COLLECTION: z.string()
 })
 
 type Secrets = z.infer<typeof secretSchema>
@@ -22,7 +22,7 @@ export const getSecrets = async (): Promise<Secrets> => {
       MONGO_DB_NAME: 'book',
       MONGO_BOOK_COLLECTION: 'book',
       MONGO_RENT_BOOK_COLLECTION: 'rentBook',
-      MONGO_CLIENT_COLLECTION: 'client'
+      MONGO_CUSTOMER_COLLECTION: 'customer'
     }
   }
 
@@ -49,6 +49,6 @@ export const getSecrets = async (): Promise<Secrets> => {
     MONGO_DB_NAME: process.env['MONGO_DB_NAME'],
     MONGO_BOOK_COLLECTION: process.env['MONGO_BOOK_COLLECTION'],
     MONGO_RENT_BOOK_COLLECTION: process.env['MONGO_RENT_BOOK_COLLECTION'],
-    MONGO_CLIENT_COLLECTION: process.env['MONGO_CLIENT_COLLECTION']
+    MONGO_CUSTOMER_COLLECTION: process.env['MONGO_CUSTOMER_COLLECTION']
   })
 }

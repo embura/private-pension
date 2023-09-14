@@ -3,5 +3,5 @@ export const routes = {
   privateBookV1: '/api/private/v1/book',
   login: '/public/login',
   products: '/products',
-  clients: '/clients'
+  customer: '/customers'
 } as const

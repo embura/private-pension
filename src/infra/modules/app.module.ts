@@ -5,17 +5,17 @@ import { DatabaseModule } from './common/database.module'
 import { MongoModule } from './common/mongo.module'
 import { DomainModule } from './domain.module'
 import { HealthController } from '../controllers/health'
-import { ClientController } from '@infra/controllers/client'
-import { ClientRepositoriesModule } from './client.repositories.module'
+import { CustomerController } from '@infra/controllers/customer'
+import { CustomerRepositoriesModule } from './customer.repositories.module'
 
 @Module({
   imports: [
     SecretsModule.forRootAsync(),
     MongoModule,
     DatabaseModule,
-    ClientRepositoriesModule,
+    CustomerRepositoriesModule,
     DomainModule
   ],
-  controllers: [HealthController, ClientController]
+  controllers: [HealthController, CustomerController]
 })
 export class AppModule {}
