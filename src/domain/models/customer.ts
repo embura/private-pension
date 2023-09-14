@@ -1,4 +1,4 @@
-export namespace Client {
+export namespace Customer {
   export interface Common {
     cpf: string
     nome: string

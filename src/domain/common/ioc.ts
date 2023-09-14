@@ -1,7 +1,7 @@
 export const domain = {
   usecases: {
-    client: {
-      create: Symbol.for('CreateClientUsecase')
+    customer: {
+      create: Symbol.for('CreateCustomerUsecase')
     }
   }
 } as const

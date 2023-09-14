@@ -5,19 +5,19 @@ import { infra } from '@infra/common/ioc'
 
 import { DatabaseModule } from './common/database.module'
 
-import { CreateClientUsecase } from '@domain/usecases/client/createClient'
-import { ClientRepositoriesModule } from './client.repositories.module'
+import { CreateCustomerUsecase } from '@domain/usecases/customer/createCustomer'
+import { CustomerRepositoriesModule } from './customer.repositories.module'
 
 @Module({
-  imports: [DatabaseModule, ClientRepositoriesModule],
+  imports: [DatabaseModule, CustomerRepositoriesModule],
   providers: [
     {
-      provide: domain.usecases.client.create,
-      useFactory: (createClientRepository) =>
-        new CreateClientUsecase(createClientRepository),
-      inject: [infra.repositories.client.create]
+      provide: domain.usecases.customer.create,
+      useFactory: (createCustomerRepository) =>
+        new CreateCustomerUsecase(createCustomerRepository),
+      inject: [infra.repositories.customer.create]
     }
   ],
-  exports: [domain.usecases.client.create]
+  exports: [domain.usecases.customer.create]
 })
 export class DomainModule {}

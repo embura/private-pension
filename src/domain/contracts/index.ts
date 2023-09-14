@@ -1,1 +1,1 @@
-export * as ClientContracts from './client'
+export * as CustomerContracts from './customer'
