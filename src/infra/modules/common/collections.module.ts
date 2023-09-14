@@ -9,16 +9,16 @@ import { Db } from 'mongodb'
   imports: [DatabaseModule],
   providers: [
     {
-      provide: infra.collections.client,
+      provide: infra.collections.customer,
       useFactory: (mongoProvider: Db, mongoCollectionName: string) => {
         return mongoProvider.collection(mongoCollectionName)
       },
       inject: [
         infra.providers.database,
-        infra.environment.database.collectionsName.client
+        infra.environment.database.collectionsName.customer
       ]
     }
   ],
-  exports: [infra.collections.client]
+  exports: [infra.collections.customer]
 })
 export class CollectionsModule {}
