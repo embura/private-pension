@@ -7,6 +7,8 @@ import { DomainModule } from './domain.module'
 import { HealthController } from '../controllers/health'
 import { CustomerController } from '@infra/controllers/customer'
 import { CustomerRepositoriesModule } from './customer.repositories.module'
+import { ProductRepositoriesModule } from './product.repositories.module'
+import { ProductController } from '@infra/controllers/product'
 
 @Module({
   imports: [
@@ -14,8 +16,9 @@ import { CustomerRepositoriesModule } from './customer.repositories.module'
     MongoModule,
     DatabaseModule,
     CustomerRepositoriesModule,
+    ProductRepositoriesModule,
     DomainModule
   ],
-  controllers: [HealthController, CustomerController]
+  controllers: [HealthController, CustomerController, ProductController]
 })
 export class AppModule {}

@@ -1,13 +1,13 @@
 import { Collection } from 'mongodb'
 import { CreateCustomer } from '@domain/repositories/customer/create'
 import { Customer } from '@domain/models/customer'
-import { CustomerId } from '@domain/contracts/customer'
+import { CustomerContracts } from '@domain/contracts'
 import { Conflict } from '@domain/errors'
 
 export class MongoCreateCustomerRepository implements CreateCustomer.Create {
   constructor(private readonly collection: Collection<Customer.Common>) {}
 
-  async create(input: Customer.Common): Promise<CustomerId> {
+  async create(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
     const customer = await this.collection.findOne({
       cpf: input.cpf
     })

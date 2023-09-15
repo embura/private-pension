@@ -8,7 +8,7 @@ export class CreateCustomerUsecase implements CustomerContracts.CreateCustomer {
     private readonly createCustomerRepository: CreateCustomer.Create
   ) {}
 
-  async execute(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
-    return await this.createCustomerRepository.create(input)
+  execute(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
+    return this.createCustomerRepository.create(input)
   }
 }

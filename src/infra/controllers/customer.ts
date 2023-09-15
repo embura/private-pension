@@ -4,7 +4,7 @@ import { routes } from '@infra/common/baseRoutes'
 import {
   CreateCustomer,
   createCustomerSchema
-} from '@infra/dto/http/CreateCustomer.dto'
+} from '@infra/dto/http/createCustomer.dto'
 import {
   Body,
   Controller,
@@ -14,7 +14,7 @@ import {
   Post
 } from '@nestjs/common'
 
-@Controller(routes.customer)
+@Controller(routes.customers)
 export class CustomerController {
   constructor(
     @Inject(domain.usecases.customer.create)

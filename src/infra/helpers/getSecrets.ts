@@ -6,8 +6,7 @@ import { SecretsManagerClient } from '@infra/providers/secretsManager'
 const secretSchema = z.object({
   MONGO_URL: z.string().optional(),
   MONGO_DB_NAME: z.string(),
-  MONGO_BOOK_COLLECTION: z.string(),
-  MONGO_RENT_BOOK_COLLECTION: z.string(),
+  MONGO_PRODUCT_COLLECTION: z.string(),
   MONGO_CUSTOMER_COLLECTION: z.string()
 })
 
@@ -19,9 +18,8 @@ export const getSecrets = async (): Promise<Secrets> => {
     process.env['NODE_ENV'] !== 'homologation'
   ) {
     return {
-      MONGO_DB_NAME: 'book',
-      MONGO_BOOK_COLLECTION: 'book',
-      MONGO_RENT_BOOK_COLLECTION: 'rentBook',
+      MONGO_DB_NAME: 'private-pension',
+      MONGO_PRODUCT_COLLECTION: 'product',
       MONGO_CUSTOMER_COLLECTION: 'customer'
     }
   }
@@ -47,8 +45,7 @@ export const getSecrets = async (): Promise<Secrets> => {
   return secretSchema.parse({
     ...secretObject,
     MONGO_DB_NAME: process.env['MONGO_DB_NAME'],
-    MONGO_BOOK_COLLECTION: process.env['MONGO_BOOK_COLLECTION'],
-    MONGO_RENT_BOOK_COLLECTION: process.env['MONGO_RENT_BOOK_COLLECTION'],
+    MONGO_PRODUCT_COLLECTION: process.env['MONGO_PRODUCT_COLLECTION'],
     MONGO_CUSTOMER_COLLECTION: process.env['MONGO_CUSTOMER_COLLECTION']
   })
 }

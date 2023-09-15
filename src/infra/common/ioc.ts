@@ -5,12 +5,14 @@ export const infra = {
       caFile: Symbol.for('databaseCaFile'),
       url: Symbol.for('databaseUrl'),
       collectionsName: {
-        customer: Symbol.for('customerCollectionName')
+        customer: Symbol.for('customerCollectionName'),
+        product: Symbol.for('productCollectionName')
       }
     }
   },
   collections: {
-    customer: Symbol.for('customerCollection')
+    customer: Symbol.for('customerCollection'),
+    product: Symbol.for('productCollection')
   },
   providers: {
     mongo: Symbol.for('mongo'),
@@ -20,6 +22,9 @@ export const infra = {
   repositories: {
     customer: {
       create: Symbol.for('createCustomerRepository')
+    },
+    product: {
+      create: Symbol.for('createProductRepository')
     }
   }
 } as const
