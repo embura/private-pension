@@ -1,10 +1,10 @@
 import { domain } from '@domain/common/ioc'
-import { CreateCustomerUsecase } from '@domain/usecases/customer/createCustomer'
+import { CreateProductUsecase } from '@domain/usecases/product/createProduct'
 import { routes } from '@infra/common/baseRoutes'
 import {
-  CreateCustomer,
-  createCustomerSchema
-} from '@infra/dto/http/CreateCustomer.dto'
+  CreateProduct,
+  createProductSchema
+} from '@infra/dto/http/createProduct.dto'
 import {
   Body,
   Controller,
@@ -14,18 +14,18 @@ import {
   Post
 } from '@nestjs/common'
 
-@Controller(routes.customer)
-export class CustomerController {
+@Controller(routes.products)
+export class ProductController {
   constructor(
-    @Inject(domain.usecases.customer.create)
-    private readonly createCustomerUsecase: CreateCustomerUsecase
+    @Inject(domain.usecases.product.create)
+    private readonly createProductUsecase: CreateProductUsecase
   ) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() body: CreateCustomer) {
-    const customer = createCustomerSchema.parse(body)
+  async create(@Body() body: CreateProduct) {
+    const product = createProductSchema.parse(body)
 
-    return await this.createCustomerUsecase.execute(customer)
+    return await this.createProductUsecase.execute(product)
   }
 }

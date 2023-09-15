@@ -3,10 +3,10 @@ import { CreateProduct } from '@domain/repositories/product/create'
 
 import { Product } from '@domain/models/product'
 
-export class CreateProductUsecase implements ProductContracts.CreateProdutsId {
+export class CreateProductUsecase implements ProductContracts.CreateProduct {
   constructor(private readonly createProductRepository: CreateProduct.Create) {}
 
-  async execute(input: Product.Common): Promise<ProductContracts.ProdutsId> {
+  execute(input: Product.Common): Promise<ProductContracts.ProdutId> {
     return this.createProductRepository.create(input)
   }
 }
