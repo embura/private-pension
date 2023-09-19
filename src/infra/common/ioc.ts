@@ -6,13 +6,15 @@ export const infra = {
       url: Symbol.for('databaseUrl'),
       collectionsName: {
         customer: Symbol.for('customerCollectionName'),
-        product: Symbol.for('productCollectionName')
+        product: Symbol.for('productCollectionName'),
+        plan: Symbol.for('planCollectionName')
       }
     }
   },
   collections: {
     customer: Symbol.for('customerCollection'),
-    product: Symbol.for('productCollection')
+    product: Symbol.for('productCollection'),
+    plan: Symbol.for('planCollection')
   },
   providers: {
     mongo: Symbol.for('mongo'),
@@ -21,10 +23,15 @@ export const infra = {
   },
   repositories: {
     customer: {
-      create: Symbol.for('createCustomerRepository')
+      create: Symbol.for('createCustomerRepository'),
+      get: Symbol.for('getCustomerRepository')
     },
     product: {
-      create: Symbol.for('createProductRepository')
+      create: Symbol.for('createProductRepository'),
+      get: Symbol.for('getProductRepository')
+    },
+    plan: {
+      create: Symbol.for('createPlanRepository')
     }
   }
 } as const
