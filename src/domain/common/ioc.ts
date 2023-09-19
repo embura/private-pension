@@ -5,6 +5,9 @@ export const domain = {
     },
     product: {
       create: Symbol.for('CreateProductUsecase')
+    },
+    plan: {
+      create: Symbol.for('CreatePlanUsecase')
     }
   }
 } as const
