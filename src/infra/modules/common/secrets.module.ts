@@ -31,6 +31,10 @@ export class SecretsModule {
         {
           provide: infra.environment.database.collectionsName.product,
           useValue: secrets.MONGO_PRODUCT_COLLECTION
+        },
+        {
+          provide: infra.environment.database.collectionsName.plan,
+          useValue: secrets.MONGO_PLAN_COLLECTION
         }
       ],
       exports: [
@@ -38,7 +42,8 @@ export class SecretsModule {
         infra.environment.database.caFile,
         infra.environment.database.name,
         infra.environment.database.collectionsName.customer,
-        infra.environment.database.collectionsName.product
+        infra.environment.database.collectionsName.product,
+        infra.environment.database.collectionsName.plan
       ]
     }
   }

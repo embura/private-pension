@@ -6,10 +6,10 @@ import {
   MissingData,
   NotFound,
   Forbidden,
-  InvalidTokenJWT,
-  InvalidBookId,
-  Conflict
+  Conflict,
+  CustomerHasNoMinimumAge
 } from '@domain/errors'
+import { PlanExceptions } from '@domain/errors/PlanExceptions'
 
 interface Response {
   statusCode: HttpStatus
@@ -37,10 +37,10 @@ export const errorStatusCode = (error: unknown): HttpStatus => {
 
   switch (error.constructor) {
     case MissingData:
-    case InvalidBookId:
     case ZodError:
-    case InvalidTokenJWT:
     case Conflict:
+    case CustomerHasNoMinimumAge:
+    case PlanExceptions:
       return HttpStatus.BAD_REQUEST
     case NotFound:
       return HttpStatus.NOT_FOUND

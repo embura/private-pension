@@ -1,4 +1,4 @@
-import { number, z } from 'zod'
+import { z } from 'zod'
 import { date } from '../common/types'
 
 export const createProductSchema = z.object({
