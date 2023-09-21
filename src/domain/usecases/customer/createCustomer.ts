@@ -9,6 +9,6 @@ export class CreateCustomerUsecase implements CustomerContracts.CreateCustomer {
   ) {}
 
   execute(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
-    return this.createCustomerRepository.create(input)
+    return this.createCustomerRepository.execute(input)
   }
 }

@@ -8,6 +8,9 @@ export const domain = {
     },
     plan: {
       create: Symbol.for('CreatePlanUsecase')
+    },
+    planContribution: {
+      create: Symbol.for('CreatePlanContributionUsecase')
     }
   }
 } as const

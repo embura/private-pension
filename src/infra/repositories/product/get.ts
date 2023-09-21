@@ -6,7 +6,7 @@ import { Product } from '@domain/models'
 export class MongoGetProductRepository implements GetProduct.Get {
   constructor(private readonly collection: Collection<Product.Common>) {}
 
-  async get(input: ProdutId): Promise<Product.WithId | null> {
+  async execute(input: ProdutId): Promise<Product.WithId | null> {
     const product = await this.collection.findOne({
       _id: new ObjectId(input.id)
     })

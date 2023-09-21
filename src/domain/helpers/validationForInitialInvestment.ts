@@ -21,7 +21,8 @@ type Checker = (input: CheckerInput) => PlanExeptionsMessages | null
 const calculateCustomerAge = (dataDeNascimento: Date) => {
   const today = new Date()
   const timeDifference = today.getTime() - dataDeNascimento.getTime()
-  return Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365))
+  const age = 1000 * 60 * 60 * 24 * 365
+  return Math.floor(timeDifference / age)
 }
 
 const customerHasNoMinimumAge: Checker = ({ customer, product }) => {

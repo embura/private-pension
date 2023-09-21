@@ -8,7 +8,8 @@ const secretSchema = z.object({
   MONGO_DB_NAME: z.string(),
   MONGO_PRODUCT_COLLECTION: z.string(),
   MONGO_CUSTOMER_COLLECTION: z.string(),
-  MONGO_PLAN_COLLECTION: z.string()
+  MONGO_PLAN_COLLECTION: z.string(),
+  MONGO_PLAN_CONTRIBUTION_COLLECTION: z.string()
 })
 
 type Secrets = z.infer<typeof secretSchema>
@@ -22,7 +23,8 @@ export const getSecrets = async (): Promise<Secrets> => {
       MONGO_DB_NAME: 'private-pension',
       MONGO_PRODUCT_COLLECTION: 'product',
       MONGO_CUSTOMER_COLLECTION: 'customer',
-      MONGO_PLAN_COLLECTION: 'plan'
+      MONGO_PLAN_COLLECTION: 'plan',
+      MONGO_PLAN_CONTRIBUTION_COLLECTION: 'planContribution'
     }
   }
 
@@ -49,6 +51,8 @@ export const getSecrets = async (): Promise<Secrets> => {
     MONGO_DB_NAME: process.env['MONGO_DB_NAME'],
     MONGO_PRODUCT_COLLECTION: process.env['MONGO_PRODUCT_COLLECTION'],
     MONGO_CUSTOMER_COLLECTION: process.env['MONGO_CUSTOMER_COLLECTION'],
-    MONGO_PLAN_COLLECTION: process.env['MONGO_PLAN_COLLECTION']
+    MONGO_PLAN_COLLECTION: process.env['MONGO_PLAN_COLLECTION'],
+    MONGO_PLAN_CONTRIBUTION_COLLECTION:
+      process.env['MONGO_PLAN_CONTRIBUTION_COLLECTION']
   })
 }

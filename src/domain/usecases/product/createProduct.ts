@@ -7,6 +7,6 @@ export class CreateProductUsecase implements ProductContracts.CreateProduct {
   constructor(private readonly createProductRepository: CreateProduct.Create) {}
 
   execute(input: Product.Common): Promise<ProductContracts.ProdutId> {
-    return this.createProductRepository.create(input)
+    return this.createProductRepository.execute(input)
   }
 }

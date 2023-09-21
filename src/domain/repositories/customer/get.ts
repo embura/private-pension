@@ -3,6 +3,6 @@ import { Customer } from '@domain/models/customer'
 
 export namespace GetCustomer {
   export interface Get {
-    get(input: CustomerId): Promise<Customer.WithId | null>
+    execute(input: CustomerId): Promise<Customer.WithId | null>
   }
 }

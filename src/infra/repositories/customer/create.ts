@@ -7,7 +7,7 @@ import { Conflict } from '@domain/errors'
 export class MongoCreateCustomerRepository implements CreateCustomer.Create {
   constructor(private readonly collection: Collection<Customer.Common>) {}
 
-  async create(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
+  async execute(input: Customer.Common): Promise<CustomerContracts.CustomerId> {
     const customer = await this.collection.findOne({
       cpf: input.cpf
     })
