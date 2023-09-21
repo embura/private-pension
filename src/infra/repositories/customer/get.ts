@@ -5,7 +5,7 @@ import { CustomerContracts } from '@domain/contracts'
 
 export class MongoGetCustomerRepository implements GetCustomer.Get {
   constructor(private readonly collection: Collection<Customer.Common>) {}
-  async get(
+  async execute(
     input: CustomerContracts.CustomerId
   ): Promise<Customer.WithId | null> {
     const customer = await this.collection.findOne({

@@ -3,6 +3,6 @@ import { Customer } from '@domain/models/customer'
 
 export namespace CreateCustomer {
   export interface Create {
-    create(input: Customer.Common): Promise<CustomerId>
+    execute(input: Customer.Common): Promise<CustomerId>
   }
 }

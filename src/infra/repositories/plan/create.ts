@@ -6,7 +6,7 @@ import { ProductContracts } from '@domain/contracts'
 export class MongoCreatePlanRepository implements CreatePlan.Create {
   constructor(private readonly collection: Collection<Plan.Common>) {}
 
-  async create(input: Plan.Common): Promise<ProductContracts.ProdutId> {
+  async execute(input: Plan.Common): Promise<ProductContracts.ProdutId> {
     const { insertedId: id } = await this.collection.insertOne(input)
     return {
       id: id.toString()

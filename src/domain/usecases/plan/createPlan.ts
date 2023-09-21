@@ -18,7 +18,7 @@ export class CreatePlanUsecase implements PlanContracts.CreatePlan {
   ) {}
 
   async execute(input: Plan.Common): Promise<PlanContracts.PlanId> {
-    const customer = await this.getCustomerRepository.get({
+    const customer = await this.getCustomerRepository.execute({
       id: input.idCliente
     })
 
@@ -28,7 +28,7 @@ export class CreatePlanUsecase implements PlanContracts.CreatePlan {
       })
     }
 
-    const product = await this.getProductRepository.get({
+    const product = await this.getProductRepository.execute({
       id: input.idProduto
     })
 
@@ -48,6 +48,6 @@ export class CreatePlanUsecase implements PlanContracts.CreatePlan {
       throw new PlanExceptions(checkReason.join(','))
     }
 
-    return this.createPlanRepository.create(input)
+    return this.createPlanRepository.execute(input)
   }
 }

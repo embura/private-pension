@@ -11,6 +11,7 @@ import { ProductRepositoriesModule } from './product.repositories.module'
 import { ProductController } from '@infra/controllers/product'
 import { PlanRepositoriesModule } from './plan.repositories.module'
 import { PlanController } from '@infra/controllers/plan'
+import { PlanContributionRepositoriesModule } from './planContribution.repositories.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PlanController } from '@infra/controllers/plan'
     CustomerRepositoriesModule,
     ProductRepositoriesModule,
     PlanRepositoriesModule,
+    PlanContributionRepositoriesModule,
     DomainModule
   ],
   controllers: [
