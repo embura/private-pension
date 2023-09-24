@@ -7,6 +7,7 @@ export class MongoGetProductRepository implements GetProduct.Get {
   constructor(private readonly collection: Collection<Product.Common>) {}
 
   async execute(input: ProdutId): Promise<Product.WithId | null> {
+    console.log({ input })
     const product = await this.collection.findOne({
       _id: new ObjectId(input.id)
     })

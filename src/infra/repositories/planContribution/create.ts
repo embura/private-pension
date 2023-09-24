@@ -1,7 +1,4 @@
 import { Collection } from 'mongodb'
-import { CreatePlan } from '@domain/repositories/plan/create'
-import { Plan } from '@domain/models/plan'
-import { ProductContracts } from '@domain/contracts'
 import { CreatePlanContribution } from '@domain/repositories/planContribution/create'
 import { PlanContribution } from '@domain/models'
 

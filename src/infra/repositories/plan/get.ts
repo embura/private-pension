@@ -1,7 +1,7 @@
 import { Collection, ObjectId } from 'mongodb'
 import { GetPlan } from '@domain/repositories/plan/get'
 import { Plan } from '@domain/models/plan'
-import { PlanContracts, ProductContracts } from '@domain/contracts'
+import { PlanContracts } from '@domain/contracts'
 
 export class MongoGetPlanRepository implements GetPlan.Get {
   constructor(private readonly collection: Collection<Plan.WithId>) {}

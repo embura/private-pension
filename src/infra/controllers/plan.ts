@@ -1,9 +1,11 @@
 import { domain } from '@domain/common/ioc'
-import { ContributionInput } from '@domain/contracts/plan'
+import { RedeemPlanContracts } from '@domain/contracts'
+import { ContributionInput } from '@domain/contracts/createPlan'
 import { Customer, Plan } from '@domain/models'
 import {
   CreatePlanUsecase,
-  CreatePlanContributionUsecase
+  CreatePlanContributionUsecase,
+  CreatePlanRedeemUsecase
 } from '@domain/usecases/plan'
 import { routes } from '@infra/common/baseRoutes'
 import { idSchema } from '@infra/dto/common/types'
@@ -13,6 +15,10 @@ import {
   CreatePlan,
   createPlanSchema
 } from '@infra/dto/http'
+import {
+  createRedeem,
+  createRedeemSchema
+} from '@infra/dto/http/cratePlanRedeem.dto'
 import {
   Body,
   Controller,
@@ -28,33 +34,48 @@ export class PlanController {
   constructor(
     @Inject(domain.usecases.plan.create)
     private readonly createPlanUsecase: CreatePlanUsecase,
-    @Inject(domain.usecases.planContribution.create)
-    private readonly createPlanContributionUsecase: CreatePlanContributionUsecase
+    @Inject(domain.usecases.plan.contribution)
+    private readonly createPlanContributionUsecase: CreatePlanContributionUsecase,
+    @Inject(domain.usecases.plan.redeem)
+    private readonly createPlanRedeemUsecase: CreatePlanRedeemUsecase
   ) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() body: CreatePlan) {
     const plan = createPlanSchema.parse(body)
-    return this.createPlanUsecase.execute(plan)
+    return this.createPlanUsecase.execute({
+      ...plan,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    })
   }
 
-  @Post('/:id/add')
+  @Post('/contribution')
   @HttpCode(HttpStatus.CREATED)
-  createContribution(
-    @Param('id') id: string,
-    @Body() body: createContribution
-  ) {
-    const idPlano = idSchema.parse(id)
+  createContribution(@Body() body: createContribution) {
     const planContributionToCreate = createContributionSchema.parse(body)
 
     const input: ContributionInput = {
       idCliente: planContributionToCreate.idCliente,
-      idProduto: planContributionToCreate.idProduto,
-      valorAporte: planContributionToCreate.valorAporte,
-      idPlano
-    } as unknown as ContributionInput
+      idPlano: planContributionToCreate.idPlano,
+      valorAporte: planContributionToCreate.valorAporte
+    }
 
     return this.createPlanContributionUsecase.execute(input)
+  }
+
+  @Post('/redeem')
+  @HttpCode(HttpStatus.CREATED)
+  redeem(@Body() body: createRedeem) {
+    const planRedeemToCreate = createRedeemSchema.parse(body)
+
+    const input: RedeemPlanContracts.Input = {
+      idCliente: planRedeemToCreate.idCliente,
+      idPlano: planRedeemToCreate.idPlano,
+      valorResgate: planRedeemToCreate.valorResgate
+    }
+
+    return this.createPlanRedeemUsecase.execute(input)
   }
 }

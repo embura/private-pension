@@ -5,6 +5,8 @@ export namespace Plan {
     aporte: number
     dataDaContratacao: Date
     idadeDeAposentadoria: number
+    createdAt: Date
+    updatedAt: Date
   }
 
   export interface WithId extends Common {

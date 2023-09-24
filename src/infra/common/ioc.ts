@@ -8,7 +8,8 @@ export const infra = {
         customer: Symbol.for('customerCollectionName'),
         product: Symbol.for('productCollectionName'),
         plan: Symbol.for('planCollectionName'),
-        planContribution: Symbol.for('planContributionCollectionName')
+        planContribution: Symbol.for('planContributionCollectionName'),
+        planRedemption: Symbol.for('planRedemptionCollectionName')
       }
     }
   },
@@ -16,7 +17,8 @@ export const infra = {
     customer: Symbol.for('customerCollection'),
     product: Symbol.for('productCollection'),
     plan: Symbol.for('planCollection'),
-    planContribution: Symbol.for('planContributionCollection')
+    planContribution: Symbol.for('planContributionCollection'),
+    planRedemption: Symbol.for('planRedemptionCollection')
   },
   providers: {
     mongo: Symbol.for('mongo'),
@@ -34,10 +36,15 @@ export const infra = {
     },
     plan: {
       create: Symbol.for('createPlanRepository'),
-      get: Symbol.for('getPlanRepository')
+      get: Symbol.for('getPlanRepository'),
+      getPlanAndConctribution: Symbol.for('getPlanAndContributionRepository')
     },
     planContribution: {
       create: Symbol.for('createPlanContributionRepository')
+    },
+    planRedemption: {
+      create: Symbol.for('createPlanRedemptionRepository'),
+      list: Symbol.for('listPlanRedemptionRepository')
     }
   }
 } as const

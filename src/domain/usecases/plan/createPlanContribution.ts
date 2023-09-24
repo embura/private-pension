@@ -19,9 +19,8 @@ export class CreatePlanContributionUsecase
   async execute(
     input: PlanContracts.ContributionInput
   ): Promise<Pick<PlanContribution.WithId, 'id'>> {
-    console.log({ input })
     const plan = await this.getPlanRepository.execute({
-      id: input.idPlano as unknown as string
+      id: input.idPlano
     })
 
     if (!plan) {
@@ -31,7 +30,7 @@ export class CreatePlanContributionUsecase
     }
 
     const customer = await this.getCustomerRepository.execute({
-      id: input.idCliente as unknown as string
+      id: input.idCliente
     })
 
     if (!customer) {
@@ -40,26 +39,10 @@ export class CreatePlanContributionUsecase
       })
     }
 
-    const product = await this.getProductRepository.execute({
-      id: input.idProduto as unknown as string
-    })
-
-    if (!product) {
-      throw new NotFound('Not fount Product', {
-        idCliente: input.idCliente
-      })
-    }
-
-    console.log({ plan })
-    console.log({ customer })
-    console.log({ product })
-
-    const planContribution = await this.createPlanContribution.execute({
+    return this.createPlanContribution.execute({
       idCliente: input.idCliente,
-      idProduto: input.idProduto,
+      idPlano: input.idPlano,
       valorAporte: input.valorAporte
     })
-
-    return planContribution.id as any
   }
 }
