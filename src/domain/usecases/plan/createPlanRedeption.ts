@@ -1,4 +1,4 @@
-import { RedeemPlanContracts } from '@domain/contracts'
+import { RedemptionPlanContracts } from '@domain/contracts'
 import { NotFound } from '@domain/errors'
 import { PlanExceptions } from '@domain/errors/PlanExceptions'
 import { GetPlanAndContributions } from '@domain/repositories/plan/getPlanAndContributions.aggregate'
@@ -6,7 +6,9 @@ import { CreatePlanRedemption } from '@domain/repositories/planRedemption/create
 import { ListPlanRedemption } from '@domain/repositories/planRedemption/list'
 import { GetProduct } from '@domain/repositories/product/get'
 
-export class CreatePlanRedeemUsecase implements RedeemPlanContracts.RedeemPlan {
+export class CreatePlanRedeemUsecase
+  implements RedemptionPlanContracts.RedemptionPlan
+{
   constructor(
     private readonly getPlanAndContributions: GetPlanAndContributions.Get,
     private readonly getProductRepository: GetProduct.Get,
@@ -15,8 +17,8 @@ export class CreatePlanRedeemUsecase implements RedeemPlanContracts.RedeemPlan {
   ) {}
 
   async execute(
-    input: RedeemPlanContracts.Input
-  ): Promise<RedeemPlanContracts.Output> {
+    input: RedemptionPlanContracts.Input
+  ): Promise<RedemptionPlanContracts.Output> {
     const planAndContributions = await this.getPlanAndContributions.execute({
       id: input.idPlano
     })

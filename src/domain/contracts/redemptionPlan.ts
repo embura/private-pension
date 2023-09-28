@@ -10,4 +10,4 @@ export interface Output {
   id: string
 }
 
-export type RedeemPlan = Usecase<Input, Output>
+export type RedemptionPlan = Usecase<Input, Output>
