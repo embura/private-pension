@@ -5,7 +5,7 @@ import { Plan } from '@domain/models/plan'
 import { GetCustomer } from '@domain/repositories/customer/get'
 import { NotFound } from '@domain/errors'
 import { GetProduct } from '@domain/repositories/product/get'
-import { allChecks } from '@domain/helpers/validationForInitialInvestment'
+import { allChecks } from '@domain/helpers/initialInvestmentValidation'
 
 import { PlanExceptions } from '@domain/errors/PlanExceptions'
 

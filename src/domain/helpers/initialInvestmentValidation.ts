@@ -18,7 +18,7 @@ type CheckerInput = {
 
 type Checker = (input: CheckerInput) => PlanExeptionsMessages | null
 
-const calculateCustomerAge = (dataDeNascimento: Date) => {
+export const calculateCustomerAge = (dataDeNascimento: Date) => {
   const today = new Date()
   const timeDifference = today.getTime() - dataDeNascimento.getTime()
   const age = 1000 * 60 * 60 * 24 * 365

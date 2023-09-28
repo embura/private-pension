@@ -1,14 +1,12 @@
 import { domain } from '@domain/common/ioc'
-import { RedeemPlanContracts } from '@domain/contracts'
+import { RedemptionPlanContracts } from '@domain/contracts'
 import { ContributionInput } from '@domain/contracts/createPlan'
-import { Customer, Plan } from '@domain/models'
 import {
   CreatePlanUsecase,
   CreatePlanContributionUsecase,
   CreatePlanRedeemUsecase
 } from '@domain/usecases/plan'
 import { routes } from '@infra/common/baseRoutes'
-import { idSchema } from '@infra/dto/common/types'
 import {
   createContribution,
   createContributionSchema,
@@ -25,7 +23,6 @@ import {
   HttpCode,
   HttpStatus,
   Inject,
-  Param,
   Post
 } from '@nestjs/common'
 
@@ -70,7 +67,7 @@ export class PlanController {
   redeem(@Body() body: createRedeem) {
     const planRedeemToCreate = createRedeemSchema.parse(body)
 
-    const input: RedeemPlanContracts.Input = {
+    const input: RedemptionPlanContracts.Input = {
       idCliente: planRedeemToCreate.idCliente,
       idPlano: planRedeemToCreate.idPlano,
       valorResgate: planRedeemToCreate.valorResgate

@@ -14,15 +14,6 @@ export class MongoListPlanRedemptionRepository
     const sort: Sort = {
       createdAt: -1
     }
-
-    console.log(
-      '\n\n\n\n\n\n\n\n\n\n\n\n\n\n[MongoListPlanRedemptionRepository]: ',
-      {
-        input,
-        sort
-      }
-    )
-
     const planRedemption = await this.collection
       .find(input)
       .sort(sort)

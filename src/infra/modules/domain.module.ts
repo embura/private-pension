@@ -85,19 +85,22 @@ import { PlanRedemptionRepositoriesModule } from './planRedemption.repositories.
         getPlanAndContributions,
         getProductRepository,
         createPlanRedemption,
-        listPlanRedemption
+        listPlanRedemption,
+        getCustomerRepository
       ) =>
         new CreatePlanRedeemUsecase(
           getPlanAndContributions,
           getProductRepository,
           createPlanRedemption,
-          listPlanRedemption
+          listPlanRedemption,
+          getCustomerRepository
         ),
       inject: [
         infra.repositories.plan.getPlanAndConctribution,
         infra.repositories.product.get,
         infra.repositories.planRedemption.create,
-        infra.repositories.planRedemption.list
+        infra.repositories.planRedemption.list,
+        infra.repositories.customer.get
       ]
     }
   ],
