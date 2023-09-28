@@ -12,6 +12,7 @@ import { ProductController } from '@infra/controllers/product'
 import { PlanRepositoriesModule } from './plan.repositories.module'
 import { PlanController } from '@infra/controllers/plan'
 import { PlanContributionRepositoriesModule } from './planContribution.repositories.module'
+import { PlanRedemptionRepositoriesModule } from './planRedemption.repositories.module'
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { PlanContributionRepositoriesModule } from './planContribution.repositor
     ProductRepositoriesModule,
     PlanRepositoriesModule,
     PlanContributionRepositoriesModule,
+    PlanRedemptionRepositoriesModule,
     DomainModule
   ],
   controllers: [

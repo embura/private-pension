@@ -3,7 +3,7 @@ import { idSchema } from '../common/types'
 
 export const createContributionSchema = z.object({
   idCliente: idSchema,
-  idProduto: idSchema,
+  idPlano: idSchema,
   valorAporte: z.number().positive()
 })
 

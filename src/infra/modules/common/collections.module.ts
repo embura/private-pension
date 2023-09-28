@@ -47,13 +47,24 @@ import { Db } from 'mongodb'
         infra.providers.database,
         infra.environment.database.collectionsName.planContribution
       ]
+    },
+    {
+      provide: infra.collections.planRedemption,
+      useFactory: (mongoProvider: Db, mongoCollectionName: string) => {
+        return mongoProvider.collection(mongoCollectionName)
+      },
+      inject: [
+        infra.providers.database,
+        infra.environment.database.collectionsName.planRedemption
+      ]
     }
   ],
   exports: [
     infra.collections.customer,
     infra.collections.product,
     infra.collections.plan,
-    infra.collections.planContribution
+    infra.collections.planContribution,
+    infra.collections.planRedemption
   ]
 })
 export class CollectionsModule {}

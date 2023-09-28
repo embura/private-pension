@@ -1,124 +1,175 @@
-openapi: 3.0.0
+swagger: '2.0'
 info:
-  title: Book API
-  version: 1.0.0
-  description: Este repositório contém a definição Swagger (OpenAPI) para uma API de Book. 
-    A API permite gerenciar uma coleção de livros, incluindo criar, recuperar, atualizar e 
-    excluir registros de livros. Além disso, oferece suporte à capacidade de alugar um livro 
-    para um usuário.
-  
+  title: Private Pension
+  version: '1.0'
+  description: Esta documentação da API descreve os pontos finais e estruturas de dados 
+    para uma aplicação de previdência privada. A API permite que os usuários gerenciem 
+    produtos, clientes, contribuições para planos, resgates de planos e os próprios planos.
 paths:
-  /api/private/v1/book:
+  /products:
     post:
-      summary: Create a new book
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BookInput'
-      responses:
-        '200':
-          description: Book created successfully
-        '401':
-          description: Unauthorized
-        '500':
-          description: Internal Server Error
-  /api/private/v1/book/{bookId}:
-    get:
-      summary: Get book by ID
+      summary: Create a product
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
-        - name: bookId
-          in: path
+        - in: body
+          name: body
+          description: Product data
           required: true
           schema:
-            type: string
+            $ref: '#/definitions/Product'
       responses:
         '200':
-          description: Book details retrieved successfully
-        '401':
-          description: Unauthorized
-        '404':
-          description: Book not found
-    put:
-      summary: Update book by ID
-      parameters:
-        - name: bookId
-          in: path
-          required: true
+          description: Product created successfully
           schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BookInput'
-      responses:
-        '200':
-          description: Book updated successfully
-        '401':
-          description: Unauthorized
-        '404':
-          description: Book not found
-    delete:
-      summary: Delete book by ID
-      parameters:
-        - name: bookId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Book deleted successfully
-        '401':
-          description: Unauthorized
-        '404':
-          description: Book not found
-  /api/private/v1/book/{bookId}/rent:
+            $ref: '#/definitions/Product'
+  /customers:
     post:
-      summary: Rent a book
+      summary: Create a customer
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
-        - name: bookId
-          in: path
+        - in: body
+          name: body
+          description: Customer data
           required: true
           schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                userId:
-                  type: string
+            $ref: '#/definitions/Customer'
       responses:
         '200':
-          description: Book rented successfully
-        '401':
-          description: Unauthorized
-        '404':
-          description: Book not found
-components:
-  schemas:
-    BookInput:
-      type: object
-      properties:
-        title:
-          type: string
-        author:
-          type: string
-        gender:
-          type: string
-        hasAudio:
-          type: boolean
-        description:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          description: Customer created successfully
+          schema:
+            $ref: '#/definitions/Customer'
+  /plans/contribution:
+    post:
+      summary: Contribute to a plan
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Contribution data
+          required: true
+          schema:
+            $ref: '#/definitions/Contribution'
+      responses:
+        '200':
+          description: Contribution successful
+          schema:
+            $ref: '#/definitions/Contribution'
+  /plans/redeem:
+    post:
+      summary: Redeem from a plan
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Redemption data
+          required: true
+          schema:
+            $ref: '#/definitions/Redemption'
+      responses:
+        '200':
+          description: Redemption successful
+          schema:
+            $ref: '#/definitions/Redemption'
+  /plans:
+    post:
+      summary: Create a plan
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Plan data
+          required: true
+          schema:
+            $ref: '#/definitions/Plan'
+      responses:
+        '200':
+          description: Plan created successfully
+          schema:
+            $ref: '#/definitions/Plan'
+definitions:
+  Product:
+    type: object
+    properties:
+      nome:
+        type: string
+      susep:
+        type: string
+      expiracaoDeVenda:
+        type: string
+        format: date-time
+      valorMinimoAporteInicial:
+        type: number
+      valorMinimoAporteExtra:
+        type: number
+      idadeDeEntrada:
+        type: integer
+      idadeDeSaida:
+        type: integer
+      carenciaInicialDeResgate:
+        type: integer
+      carenciaEntreResgates:
+        type: integer
+  Customer:
+    type: object
+    properties:
+      cpf:
+        type: string
+      nome:
+        type: string
+      email:
+        type: string
+        format: email
+      dataDeNascimento:
+        type: string
+        format: date-time
+      genero:
+        type: string
+      rendaMensal:
+        type: number
+  Contribution:
+    type: object
+    properties:
+      idCliente:
+        type: string
+      idPlano:
+        type: string
+      valorAporte:
+        type: number
+  Redemption:
+    type: object
+    properties:
+      idCliente:
+        type: string
+      idPlano:
+        type: string
+      valorResgate:
+        type: number
+  Plan:
+    type: object
+    properties:
+      idCliente:
+        type: string
+      idProduto:
+        type: string
+      aporte:
+        type: number
+      dataDaContratacao:
+        type: string
+        format: date-time
+      idadeDeAposentadoria:
+        type: integer

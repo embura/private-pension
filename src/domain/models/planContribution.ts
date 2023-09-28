@@ -1,10 +1,11 @@
+import { PlanId } from '@domain/contracts/createPlan'
 import { Customer } from './customer'
 import { Product } from './product'
 
 export namespace PlanContribution {
   export interface Common {
-    idCliente: Pick<Customer.WithId, 'id'>
-    idProduto: Pick<Product.WithId, 'id'>
+    idCliente: string
+    idPlano: string
     valorAporte: number
   }
 

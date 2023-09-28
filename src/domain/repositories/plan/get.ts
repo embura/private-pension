@@ -1,4 +1,4 @@
-import { PlanId } from '@domain/contracts/plan'
+import { PlanId } from '@domain/contracts/createPlan'
 import { Plan } from '@domain/models/plan'
 
 export namespace GetPlan {

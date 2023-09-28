@@ -4,7 +4,10 @@ import { date } from '../common/types'
 export const createProductSchema = z.object({
   nome: z.string(),
   susep: z.string(),
-  expiracaoDeVenda: date,
+  expiracaoDeVenda: date.refine(
+    (val) => val > new Date(),
+    () => ({ message: 'expiracaoDeVenda precisa ser uma data maior que hoje' })
+  ),
   valorMinimoAporteInicial: z.number().positive(), // valor mínimo de aporte no momento da contração
   valorMinimoAporteExtra: z.number().positive(), // valor mínimo do aporte extra
   idadeDeEntrada: z.number().positive(), // idade mínima para comprar o produto
