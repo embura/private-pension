@@ -2,9 +2,6 @@ import { mock } from 'jest-mock-extended'
 
 import { CreateCustomer } from '@domain/repositories/customer/create'
 import { CreateCustomerUsecase } from '@domain/usecases/customer/createCustomer'
-import { ObjectId } from 'mongodb'
-// import { makeCouponWithId } from '@tests/factories'
-import { NotFound } from '@domain/errors'
 import { Customer } from '@domain/models'
 import { makeCustomer } from '@tests/factories/makeCustomer'
 
@@ -18,7 +15,7 @@ const makeSut = () => {
   return { sut, createCustomerRepositoryStub }
 }
 
-describe('Get Coupon Draft', () => {
+describe('Get Customer Draft', () => {
   const input: Customer.Common = makeCustomer()
 
   describe('Happy path', () => {

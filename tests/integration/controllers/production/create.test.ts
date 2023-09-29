@@ -11,7 +11,7 @@ import { resetMongoCollection } from '@tests/helpers/resetMongoCollection'
 import { makeProduct } from '@tests/factories/makeProduct'
 import { CreateProduct } from '@infra/dto/http'
 
-describe('Create product Coupon controller', () => {
+describe('Create product Produc controller', () => {
   let sut: ProductController
   let createProductUsecase: CreateProductUsecase
   let app: TestingModule
