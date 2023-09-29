@@ -139,21 +139,20 @@ Projeto pensado para ser executado em lambda
 
 Primeiro instale as dependências:
 
+
+Inicia aplicação
+
+subir container do mongo e seu client web:
+```
+docker compose -f mongo.yml up -d
+```
+
 ```
 yarn
 ```
 
-
-Inicia aplicação
-
 ```
 yarn start:lambda
-```
-
-subir container do mongo e seu client web:
-
-```
-docker compose -f mongo.yml up -d
 ```
 
 
