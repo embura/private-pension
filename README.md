@@ -129,6 +129,7 @@ Esta documentação da API fornece detalhes sobre como interagir com a API de se
 permitindo que os usuários gerenciem produtos, clientes, contribuições, resgates e planos financeiros.
 
 
+[Board](https://github.com/users/embura/projects/3/views/1)
 ---------------
 # Iniciando o projeto
 
